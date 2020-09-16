@@ -1,3 +1,3 @@
-# Learning... Keep Learning...
+# Learning Go-Lang
 
-This is my repository for storing all the material i have studied. Free for anyone who wants to use this repository for learning.
+Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
