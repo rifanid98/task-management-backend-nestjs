@@ -167,11 +167,68 @@ func main() {
 
 	fmt.Println("")
 
+	/**
 	fmt.Println("Append")
-	var monthsSlice = months[:5]
+	// bikin pusing....
+
+	var monthsA = [12]string{
+		"januari",
+		"februari",
+		"maret",
+		"april",
+		"mei",
+		"juni",
+		"juli",
+		"agustus",
+		"september",
+		"oktober",
+		"november",
+		"desember",
+	}
+
+	var monthsSliceA1 = monthsA[0:]
+	monthsSliceA1[2] = "MARET"
+	monthsSliceA1[3] = "APRIL"
+
+	var monthsSliceA2 = append(monthsSliceA1, "juni")
+	monthsSliceA2[0] = "JANUARI"
+	fmt.Println(monthsA)
+	fmt.Println(monthsSliceA1)
+	fmt.Println(monthsSliceA2)
+
+	fmt.Println("")
+
+	var monthsB = [12]string{
+		"januari",
+		"februari",
+		"maret",
+		"april",
+		"mei",
+		"juni",
+		"juli",
+		"agustus",
+		"september",
+		"oktober",
+		"november",
+		"desember",
+	}
+
+	var monthsSliceB1 = monthsB[0:]
+	monthsSliceB1[2] = "MARET"
+	monthsSliceB1[3] = "APRIL"
+
+	var monthsSliceB2 = append(monthsSliceB1, "juni")
+	monthsSliceB2[0] = "JANUARI"
+	fmt.Println(monthsB)
+	fmt.Println(monthsSliceB1)
+	fmt.Println(monthsSliceB2)
+	*/
+
+	/**
 	fmt.Println("monthsSlice values  ", monthsSlice, "             // before append")
 	fmt.Println("----------------------------------------------------------------------------------------------------------------------------")
 	var monthsSlice2 = append(monthsSlice, "otherMonths")
+	monthsSlice2[0] = "test"
 	fmt.Println("monthsSlice values  ", monthsSlice, "             // after append")
 	fmt.Println("monthsSlice2 values ", monthsSlice2, " // append new element into monthsSlice2 but ")
 	fmt.Println("                                                                             // monthsSlice is not affected")
@@ -193,4 +250,15 @@ func main() {
 	fmt.Println("funfact: after append, the slice still connected to the source of sliced array, and the value of array is updated too")
 	fmt.Println("----------------------------------------------------------------------------------------------------------------------------")
 
+	days := [...]string{"senin", "selasa", "rabu", "kamis"}
+	daySlice1 := days[1:]
+	daySlice1[0] = "SELASA"
+	daySlice1[1] = "RABU"
+
+	daySlice2 := append(daySlice1, "jumat")
+	daySlice2[0] = "UPS"
+	fmt.Println(days)
+	fmt.Println(daySlice1)
+	fmt.Println(daySlice2)
+	*/
 }
