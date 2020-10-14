@@ -23,6 +23,18 @@ type StructName struct {
 	VariableName3 dataType
 	....
 }
+
+#StructTag#
+Struct with tag options
+
+ex:
+type StructName struct {
+	VariableName1 dataType `tagName:"tagValue" tagName2:"tagValue2"`
+	VariableName2 dataType
+}
+
+use:
+see at 52-package-reflect/main.go file
 */
 
 // Person struct
