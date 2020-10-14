@@ -60,8 +60,19 @@ func functionName() {
 */
 
 func main() {
-	pointer1()
-	pointer2()
+	/** operator & */
+	// pointer1()
+
+	/** operator * */
+	// pointer2()
+
+	/** pointer in function */
+	// manusia := Manusia{"Adnin"}
+	// pointer3(&manusia) // &{Rifandi}
+
+	/** pointe in struct method */
+	// manusia2 := Manusia{"Rifandi"}
+	// manusia2.pointer4() // &{Sutanto}
 }
 
 /** operator & */
@@ -90,7 +101,6 @@ func pointer1() {
 /** operator * */
 func pointer2() {
 	person := [...]string{"Adnin", "Rifandi", "Sutanto", "Putra"}
-
 	personValue := person
 	personValue[0] = "Impostor"
 
@@ -103,22 +113,13 @@ func pointer2() {
 	personReference := &person
 	personReference[0] = "Impostor"
 
-	// fmt.Println("Pass by Reference")
-	// fmt.Println("--------------")
-	// fmt.Println(person)          // Impostor Rifandi Sutanto Putra
-	// fmt.Println(personReference) // Impostor Rifandi Sutanto Putra
-	// fmt.Println("--------------")
+	fmt.Println("Pass by Reference")
+	fmt.Println("--------------")
+	fmt.Println(person)          // Impostor Rifandi Sutanto Putra
+	fmt.Println(personReference) // Impostor Rifandi Sutanto Putra
+	fmt.Println("--------------")
 
 	person2 := [...]string{"Adnin", "Rifandi", "Sutanto", "Putra"}
-	// personReference = &person2
-	// personReference[1] = "Impostor"
-
-	// fmt.Println("Change Reference")
-	// fmt.Println("--------------")
-	// fmt.Println(person)          // Impostor Rifandi Sutanto Putra
-	// fmt.Println(personReference) // Adnin Impostor Sutanto Putra
-	// fmt.Println("--------------")
-
 	*personReference = person2
 	personReference[1] = "Impostor"
 
@@ -127,4 +128,21 @@ func pointer2() {
 	fmt.Println(person)          // Adnin Impostor Sutanto Putra
 	fmt.Println(personReference) // Adnin Impostor Sutanto Putra
 	fmt.Println("--------------")
+}
+
+// Manusia struct
+type Manusia struct {
+	Name string
+}
+
+/** pointer di function */
+func pointer3(person *Manusia) {
+	person.Name = "Rifandi"
+	fmt.Println(person)
+}
+
+/** method of Manusia */
+func (manusia *Manusia) pointer4() {
+	manusia.Name = "Sutanto"
+	fmt.Println(manusia)
 }
