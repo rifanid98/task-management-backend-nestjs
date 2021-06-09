@@ -1,4 +1,5 @@
-import { Injectable, ParseUUIDPipe } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
+import { v4 as uuid } from 'uuid';
 import { Task } from './tasks.model';
 
 @Injectable()
@@ -11,7 +12,7 @@ export class TasksService {
 
   createTask(title: string, description?: string): Task {
     const task: Task = {
-      id: new ParseUUIDPipe().toString(),
+      id: uuid(),
       title,
       description,
       status: 'OPEN',
