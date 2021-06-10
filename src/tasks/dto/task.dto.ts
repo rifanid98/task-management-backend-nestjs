@@ -1,4 +1,4 @@
-import { IsIn, IsNotEmpty } from 'class-validator';
+import { IsIn, IsNotEmpty, IsOptional } from 'class-validator';
 import { Status } from '../tasks.model';
 
 export class TaskDto {
@@ -8,6 +8,7 @@ export class TaskDto {
   @IsNotEmpty()
   description: string;
 
+  @IsOptional()
   @IsIn([...Object.keys(Status)])
   status: Status;
 }
