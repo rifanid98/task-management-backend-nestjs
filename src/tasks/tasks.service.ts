@@ -37,16 +37,9 @@ export class TasksService {
     return task;
   }
 
-  // createTask(taskDto: TaskDto): Task {
-  //   const task: Task = {
-  //     id: uuid(),
-  //     ...taskDto,
-  //     status: Status.OPEN,
-  //   };
-
-  //   this.tasks.push(task);
-  //   return task;
-  // }
+  async createTask(taskDto: TaskDto): Promise<Task> {
+    return this.taskRepository.createTask(taskDto);
+  }
 
   // deleteTask(id: string): void {
   //   const task = this.getTaskById(id);
