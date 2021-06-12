@@ -40,8 +40,8 @@ export class TasksController {
     return this.tasksService.deleteTask(id);
   }
 
-  // @Patch('/:id')
-  // updateTask(@Param('id') id: string, @Body() taskDto: TaskDto): Task {
-  //   return this.tasksService.updateTask(id, taskDto);
-  // }
+  @Patch('/:id')
+  updateTask(@Param('id') id: string, @Body() taskDto: TaskDto): Promise<Task> {
+    return this.tasksService.updateTask(id, taskDto);
+  }
 }
