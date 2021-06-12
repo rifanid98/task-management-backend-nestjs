@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TasksModule } from './tasks/tasks.module';
 @Module({
   imports: [
-    TasksModule, 
+    TasksModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -12,7 +12,7 @@ import { TasksModule } from './tasks/tasks.module';
       password: 'postgres',
       autoLoadEntities: true,
       synchronize: true,
-    })
+    }),
   ],
   controllers: [],
   providers: [],

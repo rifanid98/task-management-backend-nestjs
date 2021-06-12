@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { TaskFilterDto } from './dto/task-filter.dto';
 import { TaskDto } from './dto/task.dto';
+import { Task } from './tasks.entity';
 import { TasksService } from './tasks.service';
 
 @Controller('tasks')
@@ -24,10 +25,10 @@ export class TasksController {
   //   return this.tasksService.getAllTasks();
   // }
 
-  // @Get('/:id')
-  // getTaskById(@Param('id') id: string): Task {
-  //   return this.tasksService.getTaskById(id);
-  // }
+  @Get('/:id')
+  getTaskById(@Param('id') id: string): Promise<Task> {
+    return this.tasksService.getTaskById(id);
+  }
 
   // @Post()
   // createTask(@Body() taskDto: TaskDto): Task {
