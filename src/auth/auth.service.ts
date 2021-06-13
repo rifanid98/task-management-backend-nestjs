@@ -1,8 +1,4 @@
-import {
-  ConflictException,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { AuthCredentialsDto } from './dto/auth-credential.dto';
@@ -10,15 +6,19 @@ import { User } from './users.entity';
 import { UsersRepository } from './users.repository';
 import { CredentialsDto } from './dto/credentials.dto';
 import { JwtService } from '@nestjs/jwt';
+import { FindOneOptions } from 'typeorm';
 
 @Injectable()
 export class AuthService {
+  private findOneOptions: FindOneOptions;
+
   constructor(
     @InjectRepository(UsersRepository)
     private usersRepository: UsersRepository,
-
     private jwtService: JwtService,
-  ) {}
+  ) {
+    this.findOneOptions = { loadEagerRelations: false };
+  }
 
   getUser(authCredentialsDto: AuthCredentialsDto): Promise<User[]> {
     return this.usersRepository.find(authCredentialsDto);
@@ -33,7 +33,10 @@ export class AuthService {
   ): Promise<CredentialsDto> {
     const { username, password } = authCredentialsDto;
 
-    const user = await this.usersRepository.findOne({ username });
+    const user = await this.usersRepository.findOne(
+      { username },
+      this.findOneOptions,
+    );
 
     if (user && (await bcrypt.compare(password, user.password))) {
       delete user.password;
