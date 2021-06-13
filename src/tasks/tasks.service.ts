@@ -40,15 +40,15 @@ export class TasksService {
     }
   }
 
-  // async updateTask(id: string, taskDto: TaskDto): Promise<Task> {
-  //   const task = await this.getTaskById(id);
+  async updateTask(id: string, taskDto: TaskDto, user): Promise<Task> {
+    const task = await this.getTaskById(id, user);
 
-  //   Object.keys(taskDto).forEach((field) => {
-  //     task[field] = taskDto[field];
-  //   });
+    Object.keys(taskDto).forEach((field) => {
+      task[field] = taskDto[field];
+    });
 
-  //   await this.taskRepository.save(task);
+    await this.taskRepository.save(task);
 
-  //   return task;
-  // }
+    return task;
+  }
 }
