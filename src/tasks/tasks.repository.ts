@@ -4,6 +4,7 @@ import { Task } from './tasks.entity';
 import { Status } from './types/tasks-status';
 import { TaskFilterDto } from './dto/task-filter.dto';
 import { User } from 'src/auth/users.entity';
+import { ConflictException } from '@nestjs/common';
 
 @EntityRepository(Task)
 export class TasksRepository extends Repository<Task> {
@@ -45,7 +46,15 @@ export class TasksRepository extends Repository<Task> {
       user,
     });
 
-    await this.save(task);
+    try {
+      await this.save(task);
+    } catch (error) {
+      if (error.hasOwnProperty('code') && Number(error.code) === 23505) {
+        throw new ConflictException(
+          `The task with the title '${taskDto.title}' already exists`,
+        );
+      }
+    }
 
     return task;
   }

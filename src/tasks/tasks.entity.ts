@@ -1,9 +1,16 @@
 import { Exclude } from 'class-transformer';
 import { User } from 'src/auth/users.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  Unique,
+} from 'typeorm';
 import { Status } from './types/tasks-status';
 
 @Entity()
+@Unique(['title'])
 export class Task {
   @PrimaryGeneratedColumn('uuid')
   id: string;
