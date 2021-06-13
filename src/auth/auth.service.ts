@@ -1,8 +1,14 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AuthCredentialDto } from './dto/auth-credential.dto';
+import * as bcrypt from 'bcrypt';
+import { AuthCredentialsDto } from './dto/auth-credential.dto';
 import { User } from './users.entity';
 import { UsersRepository } from './users.repository';
+import { CredentialsDto } from './dto/credentials.dto';
 
 @Injectable()
 export class AuthService {
@@ -11,11 +17,30 @@ export class AuthService {
     private usersRepository: UsersRepository,
   ) {}
 
-  getUser(authCredentialDto: AuthCredentialDto): Promise<User[]> {
-    return this.usersRepository.find(authCredentialDto);
+  getUser(authCredentialsDto: AuthCredentialsDto): Promise<User[]> {
+    return this.usersRepository.find(authCredentialsDto);
   }
 
-  async signUp(authCredentialDto: AuthCredentialDto): Promise<User> {
-    return this.usersRepository.createUser(authCredentialDto);
+  async signUp(authCredentialsDto: AuthCredentialsDto): Promise<User> {
+    return this.usersRepository.createUser(authCredentialsDto);
+  }
+
+  async signIn(
+    authCredentialsDto: AuthCredentialsDto,
+  ): Promise<CredentialsDto> {
+    const { username, password } = authCredentialsDto;
+
+    const user = await this.usersRepository.findOne({ username });
+
+    if (user && (await bcrypt.compare(password, user.password))) {
+      delete user.password;
+
+      return {
+        ...user,
+        token: 'token',
+      };
+    } else {
+      throw new UnauthorizedException('Please chek your credentials');
+    }
   }
 }
