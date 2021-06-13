@@ -16,14 +16,6 @@ export class AuthService {
   }
 
   async signUp(authCredentialDto: AuthCredentialDto): Promise<User> {
-    const users = await this.getUser(authCredentialDto);
-
-    if (users.length > 0) {
-      throw new ConflictException(
-        `username ${authCredentialDto.username} already exists`,
-      );
-    }
-
     return this.usersRepository.createUser(authCredentialDto);
   }
 }
