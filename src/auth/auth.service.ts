@@ -9,12 +9,15 @@ import { AuthCredentialsDto } from './dto/auth-credential.dto';
 import { User } from './users.entity';
 import { UsersRepository } from './users.repository';
 import { CredentialsDto } from './dto/credentials.dto';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectRepository(UsersRepository)
     private usersRepository: UsersRepository,
+
+    private jwtService: JwtService,
   ) {}
 
   getUser(authCredentialsDto: AuthCredentialsDto): Promise<User[]> {
@@ -35,10 +38,7 @@ export class AuthService {
     if (user && (await bcrypt.compare(password, user.password))) {
       delete user.password;
 
-      return {
-        ...user,
-        token: 'token',
-      };
+      return { token: this.jwtService.sign({ ...user }) };
     } else {
       throw new UnauthorizedException('Please chek your credentials');
     }
