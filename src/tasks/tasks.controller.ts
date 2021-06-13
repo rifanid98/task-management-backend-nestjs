@@ -8,12 +8,14 @@ import {
   Post,
   Query,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from 'src/auth/get-user.decorator';
 import { User } from 'src/auth/users.entity';
 import { TaskFilterDto } from './dto/task-filter.dto';
 import { TaskDto } from './dto/task.dto';
+import { PostTransformInterceptor } from './interceptor/post-transform.interceptor';
 import { Task } from './tasks.entity';
 import { TasksService } from './tasks.service';
 
@@ -33,6 +35,7 @@ export class TasksController {
   }
 
   @Post()
+  @UseInterceptors(new PostTransformInterceptor())
   createTask(@Body() taskDto: TaskDto, @GetUser() user: User): Promise<Task> {
     return this.tasksService.createTask(taskDto, user);
   }
