@@ -4,12 +4,16 @@ import { TasksModule } from './tasks/tasks.module';
 import { AuthModule } from './auth/auth.module';
 import { typeormConfig } from './configs/typeorm.config';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import environtmentConfig from './configs/environtment.config';
+import {
+  configModuleOptions,
+  configModuleSchema,
+} from './configs/environtment.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [environtmentConfig],
+      load: [configModuleOptions],
+      validationSchema: configModuleSchema,
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
