@@ -6,6 +6,7 @@ export const configModuleOptions = (): ConfigModuleOptions => ({
 });
 
 export const configModuleSchema = Joi.object({
+  PORT: Joi.number().default(5000).required(),
   DB_HOST: Joi.string().trim().required(),
   DB_USER: Joi.string().trim().required(),
   DB_PASS: Joi.string().trim().required(),

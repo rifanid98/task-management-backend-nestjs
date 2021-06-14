@@ -4,6 +4,13 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 export const typeormConfig = async (
   configService: ConfigService,
 ): Promise<TypeOrmModuleOptions> => ({
+  ssl: configService.get('NODE_ENV') === 'production',
+  extra: {
+    ssl:
+      configService.get('NODE_ENV') === 'production'
+        ? { rejectUnathorized: false }
+        : null,
+  },
   type: 'postgres',
   host: configService.get('DB_HOST'),
   port: configService.get('DB_PORT'),
