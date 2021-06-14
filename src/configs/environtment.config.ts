@@ -11,4 +11,5 @@ export const configModuleSchema = Joi.object({
   DB_PASS: Joi.string().trim().required(),
   DB_NAME: Joi.string().trim().required(),
   DB_PORT: Joi.string().trim().required(),
+  SECRET: Joi.string().trim().required(),
 });
