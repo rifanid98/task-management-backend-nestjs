@@ -9,7 +9,7 @@ export const typeormConfig = async (
   const typeOrmModuleOptions: TypeOrmModuleOptions = {
     ssl: isProduction,
     extra: {
-      ssl: isProduction ? { rejectUnathorized: false } : null,
+      ssl: isProduction ? { rejectUnauthorized: false } : null,
     },
     type: 'postgres',
     host: configService.get('DB_HOST'),
