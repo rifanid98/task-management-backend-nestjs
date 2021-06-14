@@ -1,4 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
+// import { ConfigService } from '@nestjs/config';
 import { AuthService } from './auth.service';
 import { AuthCredentialsDto } from './dto/auth-credential.dto';
 import { CredentialsDto } from './dto/credentials.dto';
@@ -6,7 +7,12 @@ import { User } from './users.entity';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+  ) // private configService: ConfigService,
+  {
+    // console.log(this.configService.get('NODE_ENV'), '<<< NODE_ENV');
+  }
 
   @Post('/signup')
   signUp(@Body() authCredentialsDto: AuthCredentialsDto): Promise<User> {
