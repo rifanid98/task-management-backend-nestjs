@@ -1,4 +1,4 @@
-This is a backend api for Task Management app. Built with NestJs as a framework of Node.js and PostgreSQL as a database which has [features](#features).
+**_task-management-backend-nestjs_** is a backend api for Task Management app. Built with NestJs as a framework of Node.js and PostgreSQL as a database which has [features](#features).
 
 ## :memo: Table Of Content
 
@@ -19,7 +19,7 @@ This is a backend api for Task Management app. Built with NestJs as a framework 
 ## Installation
 
 1. Clone this repository:
-   `git clone https://github.com/rifanid98/learning`
+   `git clone https://github.com/rifanid98/task-management-backend-nestjs`
 2. Use nestjs branch:
    `git checkout nestjs`
 3. Start the server:
@@ -51,6 +51,6 @@ This is a backend api for Task Management app. Built with NestJs as a framework 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/rifanid98/learning/blob/master/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/rifanid98/task-management-backend-nestjs/blob/master/LICENSE) file for details
 
 Thanks to [Daniel Saputra](https://www.linkedin.com/in/danielwetan/) for the readme layout.
