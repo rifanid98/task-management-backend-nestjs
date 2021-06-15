@@ -1,4 +1,4 @@
-**school-management-nestjs-graphql** is a backend api for Task Management app. Built with NestJs as a framework of Node.js and PostgreSQL as a database which has [features](#features).
+This is a backend api for Task Management app. Built with NestJs as a framework of Node.js and PostgreSQL as a database which has [features](#features).
 
 ## :memo: Table Of Content
 
@@ -19,13 +19,15 @@
 ## Installation
 
 1. Clone this repository:
-   `git clone https://github.com/rifanid98/school-management-nestjs-graphql`
-2. Start the server:
+   `git clone https://github.com/rifanid98/learning`
+2. Use nestjs branch:
+   `git checkout nestjs`
+3. Start the server:
    - Open root project folder with command line (terminal, linux. cmd, windows. etc.)
    - Type and run this command `npm install` or `yarn` to install required dependencies.
    - Type and run this command `npm run start:dev` or `yarn start:dev` to start the server.
    - Make sure there are no other processes that use port 5000
-3. Run app with api testing tools like postman, etc. on http://localhost:5000/
+4. Run app with api testing tools like postman, etc. on http://localhost:5000/
 
 ## Features
 
@@ -49,6 +51,6 @@
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/rifanid98/school-management-nestjs-graphql/blob/master/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/rifanid98/learning/blob/master/LICENSE) file for details
 
 Thanks to [Daniel Saputra](https://www.linkedin.com/in/danielwetan/) for the readme layout.
