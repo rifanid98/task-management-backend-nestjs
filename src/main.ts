@@ -9,7 +9,7 @@ async function bootstrap() {
     app.enableCors();
   } else {
     app.enableCors({ origin: process.env.ORIGIN });
-    new Logger('bootstrap').log(
+    new Logger('Cors Configuration').debug(
       `Accepting requests from origin ${process.env.ORIGIN}`,
     );
   }
